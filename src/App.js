@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from "react";
-import { BrowserRouter, Switch, Route } from "react-router-dom";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import Axios from "axios";
-import Header from "./components/layout/Header";
-import Home from "./components/pages/Home";
+import Header from "./components/pages/Navbar/Navbar";
+import Home from "./components/pages/HomePage/Home";
+import Footer from "./components/pages/Footer/Footer"
+import Services from "./components/pages/Services/Services"
+import Programs from "./components/pages/Programs/Programs"
 import Login from "./components/auth/Login";
 import Register from "./components/auth/Register";
 import UserContext from "./context/UserContext";
-
 import "./style.css";
 
 export default function App() {
@@ -43,18 +45,21 @@ export default function App() {
 
   return (
     <>
-      <BrowserRouter>
+      <Router>
         <UserContext.Provider value={{ userData, setUserData }}>
           <Header />
-          <div className="container">
+
             <Switch>
               <Route exact path="/" component={Home} />
+              <Route path="/services" component={Services} />
+              <Route path= "/programs" component= {Programs} />
               <Route path="/login" component={Login} />
               <Route path="/register" component={Register} />
             </Switch>
-          </div>
+
+            <Footer />
         </UserContext.Provider>
-      </BrowserRouter>
+      </Router>
     </>
   );
 }

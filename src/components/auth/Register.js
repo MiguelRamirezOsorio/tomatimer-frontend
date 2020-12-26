@@ -55,6 +55,7 @@ export default function Register() {
           type="password"
           onChange={(e) => setPassword(e.target.value)}
         />
+        
         <input
           type="password"
           placeholder="Verify password"

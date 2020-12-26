@@ -3,6 +3,8 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
+import { Button } from "../buttons/Button";
+import "./Auth.css";
 
 export default function Login() {
   const [email, setEmail] = useState();
@@ -31,27 +33,32 @@ export default function Login() {
     }
   };
   return (
-    <div className="page">
-      <h2>Log in</h2>
+    <div className="login-container">
+      <h2>Log In</h2>
       {error && (
         <ErrorNotice message={error} clearError={() => setError(undefined)} />
       )}
       <form className="form" onSubmit={submit}>
-        <label htmlFor="login-email">Email</label>
-        <input
-          id="login-email"
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
+        <div className="form-inputs">
+          <label htmlFor="login-email" className='form-label'>Email</label>
+          <input
+            className="form-input"
+            id="login-email"
+            type="email"
+            onChange={(e) => setEmail(e.target.value)}
+          />
+        </div>
+        <div className="form-inputs">
+          <label htmlFor="login-password" className='form-label'>Password</label>
+          <input
+            className="form-input"
+            id="login-password"
+            type="password"
+            onChange={(e) => setPassword(e.target.value)}
+          />
+        </div>
 
-        <label htmlFor="login-password">Password</label>
-        <input
-          id="login-password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-
-        <input type="submit" value="Log in" />
+        <Button buttonStyle="btn--outline">log in </Button>
       </form>
     </div>
   );
