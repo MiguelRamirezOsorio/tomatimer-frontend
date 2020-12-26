@@ -33,33 +33,39 @@ export default function Login() {
     }
   };
   return (
-    <div className="login-container">
-      <h2>Log In</h2>
-      {error && (
-        <ErrorNotice message={error} clearError={() => setError(undefined)} />
-      )}
-      <form className="form" onSubmit={submit}>
-        <div className="form-inputs">
-          <label htmlFor="login-email" className='form-label'>Email</label>
-          <input
-            className="form-input"
-            id="login-email"
-            type="email"
-            onChange={(e) => setEmail(e.target.value)}
-          />
+    <div>
+      <div className="login">
+        <div className="login-screen">
+          <div className="log-title">
+          <h2>Log In</h2>
+          {error && (
+           <ErrorNotice message={error} clearError={() => setError(undefined)} />
+           )}
+          </div>
+          <form className="login-form" onSubmit={submit}>
+            <div className="control-group">
+              <label htmlFor="login-email" className='form-label'>Email</label><br></br>
+              <input
+                className="form-input"
+                id="login-email"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="control-group">
+              <label htmlFor="login-password" className='form-label'>Password</label><br></br>
+              <input
+                className="form-input"
+                id="login-password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div>
+            <Button  buttonStyle="btn--outline">log in </Button>
+          </form>
+          
         </div>
-        <div className="form-inputs">
-          <label htmlFor="login-password" className='form-label'>Password</label>
-          <input
-            className="form-input"
-            id="login-password"
-            type="password"
-            onChange={(e) => setPassword(e.target.value)}
-          />
-        </div>
-
-        <Button buttonStyle="btn--outline">log in </Button>
-      </form>
+      </div>
     </div>
   );
 }

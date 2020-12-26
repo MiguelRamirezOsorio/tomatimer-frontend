@@ -3,6 +3,9 @@ import { useHistory } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 import Axios from "axios";
 import ErrorNotice from "../misc/ErrorNotice";
+import { Button } from "../buttons/Button";
+import "./Auth.css";
+
 
 export default function Register() {
   const [email, setEmail] = useState();
@@ -36,41 +39,61 @@ export default function Register() {
   };
 
   return (
-    <div className="page">
-      <h2>Register</h2>
-      {error && (
-        <ErrorNotice message={error} clearError={() => setError(undefined)} />
-      )}
-      <form className="form" onSubmit={submit}>
-        <label htmlFor="register-email">Email</label>
-        <input
-          id="register-email"
-          type="email"
-          onChange={(e) => setEmail(e.target.value)}
-        />
-
-        <label htmlFor="register-password">Password</label>
-        <input
-          id="register-password"
-          type="password"
-          onChange={(e) => setPassword(e.target.value)}
-        />
-        
-        <input
-          type="password"
-          placeholder="Verify password"
-          onChange={(e) => setPasswordCheck(e.target.value)}
-        />
-
-        <label htmlFor="register-display-name">Display name</label>
-        <input
-          id="register-display-name"
-          type="text"
-          onChange={(e) => setDisplayName(e.target.value)}
-        />
-
-        <input type="submit" value="Register" />
-      </form>
+    <div>
+      <div className="register">
+        <div className="reg-screen">
+          <div className="reg-title">
+          <h2>Register</h2>
+           {error && (
+           <ErrorNotice message={error} clearError={() => setError(undefined)} />
+           )}
+          </div>
+          <form className="register-form" onSubmit={submit}>
+            <div className="control-group">
+              <label htmlFor="register-email" className="form-label">Email</label><br></br>
+              <input
+                id="register-email"
+                type="email"
+                onChange={(e) => setEmail(e.target.value)}
+              />
+            </div>
+            <div className="control-group">
+              <label htmlFor="register-password" className="form-label">Password</label><br></br>
+              <input
+                id="register-password"
+                type="password"
+                onChange={(e) => setPassword(e.target.value)}
+              />
+            </div><br></br>
+            <div className="control-group">
+              <input
+               type="password"
+               placeholder="Verify password"
+              onChange={(e) => setPasswordCheck(e.target.value)}
+              />
+            </div>
+            <div className="control-group">
+              <label htmlFor="register-display-name" className="form-label">Display name</label><br></br>
+              <input
+               id="register-display-name"
+               type="text"
+               onChange={(e) => setDisplayName(e.target.value)}
+              />
+            </div>
+            <Button  buttonStyle="btn--outline">submit </Button>
+          </form>
+        </div>
+      </div>
     </div>
+  
+      
+        
+
+        
+        
+
+        
+
+        
   );
 }
